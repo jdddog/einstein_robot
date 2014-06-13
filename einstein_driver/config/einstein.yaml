@@ -1,0 +1,10 @@
+- motor:
+    name: neck_pitch
+    id: 3
+- motor:
+    name: neck_roll
+    id: 2
+- motor:
+    name: neck_yaw
+    id:23
+

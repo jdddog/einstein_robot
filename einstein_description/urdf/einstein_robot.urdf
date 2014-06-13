@@ -1,0 +1,43 @@
+<robot name="einstein_robot">
+    <link name="base_link" />
+    <link name="neck_yaw_link" />
+    <link name="neck_roll_link" />
+    <link name="neck_pitch_link" />
+    <link name="gaze" />
+
+    <joint name="base_joint" type="fixed">
+        <child link="neck_yaw"/>
+        <parent link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <joint name="neck_yaw" type="revolute">
+        <parent link="base_link"/>
+        <child link="neck_yaw_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0 "/>
+        <axis xyz="0 0 1"/>
+        <limit velocity="0.78" effort="30" lower="-1.0" upper="1.0" />
+    </joint>
+
+    <joint name="neck_roll" type="revolute">
+        <parent link="neck_yaw_link"/>
+        <child link="neck_roll_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0 "/>
+        <axis xyz="0 0 1"/>
+        <limit velocity="0.78" effort="30" lower="-2" upper="2.0" />
+    </joint>
+
+    <joint name="neck_pitch" type="revolute">
+        <parent link="neck_roll_link"/>
+        <child link="neck_pitch_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0 "/>
+        <axis xyz="0 0 1"/>
+        <limit velocity="1.0" effort="30" lower="-0.8" upper="0.8" />
+    </joint>
+
+    <joint name="gaze_joint" type="fixed">
+        <parent link="neck_pitch_link"/>
+        <child link="gaze"/>
+        <origin xyz="0.0539 0 0.05" />
+    </joint>
+</robot>
